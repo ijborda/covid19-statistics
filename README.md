@@ -4,7 +4,7 @@
 
 My motivation: I'm currently involve in a local research group tackling COVID-19. With the large amount of data we have, it is easy to get drown on it. I made this web application to easily monitor the cases and deaths related to COVID-19 at a glance. With this, we can easily see whether the cases or deaths are rising significantly in the past days or not. This is intended to provide a quick feel of the COVID-19 situation at a country level.  
 
-Link to project: [https://imarijoyborda.com/covid19-statistics/](https://imarijoyborda.com/covid19-statistics/. 
+Link to project: [https://imarijoyborda.com/covid19-statistics/](https://imarijoyborda.com/covid19-statistics/). 
 
 ![Screenshot of Site - 1](screenshot.png)
 
