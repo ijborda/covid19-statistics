@@ -23,7 +23,10 @@ showStatistics()
 // Listen for selections
 document.querySelector('#submit').addEventListener('click', showStatistics)
 function showStatistics() {
+    // Get location selection and show in DOM
     let location = document.querySelector('#selection').value
+    document.querySelector('#location').innerHTML = location
+    // Fetch data
     let url = `https://covid19.mathdro.id/api/countries/${location}`
     if (location === 'Worldwide') {
         url = 'https://covid19.mathdro.id/api'
