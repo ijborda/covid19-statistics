@@ -6,7 +6,7 @@ My motivation: I'm currently involve in a local research group tackling COVID-19
 
 Link to project: [https://imarijoyborda.com/covid19-statistics/](https://imarijoyborda.com/covid19-statistics/). 
 
-![Screenshot of Site - 1](screenshot.png)
+![Screenshot of Site - 1](preview.gif)
 
 ## How To Use
 Simply visit the site to see the current cases and deaths statistics. You can also select the country of your interest. By default, the worldwide data is displayed. 
