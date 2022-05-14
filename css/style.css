@@ -81,6 +81,12 @@ ul, li {
             width: 100%;
             border-radius: 10px;
         }
+            .content .wrapper .statistics .searchTag{
+                display: block;
+                font-size: 1.7rem;
+                color: rgb(85, 85, 85);
+                margin: 1rem 0;
+            }
             .content .wrapper .statistics .form *{
                 border: none;
                 font-size: 1.7rem;
@@ -95,6 +101,12 @@ ul, li {
                    background: #072448;
                    color: #f8aa4b;
                 }
+            .content .wrapper .statistics .update{
+                display: block;
+                font-size: 1.7rem;
+                color: rgb(85, 85, 85);
+                margin: 1rem 0;
+            }
             .content .wrapper .statistics p{
                 font-size: 2rem;
                 font-weight: bold;
@@ -120,6 +132,9 @@ ul, li {
     .selection, button {
         text-align: center;
         width: 100%;
+    }
+    #selection {
+        margin-bottom: 0.5rem;
     }
 }
 
