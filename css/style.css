@@ -5,7 +5,6 @@ html {
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 100;
-    min-height: 100vh;
 }
 h1 {
     font-size: 5rem;
@@ -27,6 +26,7 @@ a:hover {
 }
 ul, li {
     list-style-type: none;
+    padding-left: 0;
 }
 
 /* Resuables */
@@ -39,6 +39,7 @@ ul, li {
 }
 .flex {
     display: flex;
+    min-height: 100vh;
 }
 
 /* Layout */
@@ -68,7 +69,6 @@ ul, li {
         }
 .content {
     flex-basis: 60%;
-    height: 100%;
     background: #dbe0e5;
 }
     .content .wrapper {
@@ -80,7 +80,6 @@ ul, li {
         .content .wrapper .statistics {
             width: 100%;
             border-radius: 10px;
-            padding: 2rem;
         }
             .content .wrapper .statistics .form *{
                 border: none;
@@ -111,3 +110,15 @@ ul, li {
                             display: inline-block;
                             width: 220px;
                         }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 991px) {
+    .flex {
+       flex-direction: column; 
+    }
+    .selection, button {
+        text-align: center;
+        width: 100%;
+    }
+}
