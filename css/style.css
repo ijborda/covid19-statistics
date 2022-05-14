@@ -56,6 +56,15 @@ ul, li {
         justify-content: center;
         align-items: flex-start; 
     }
+    .title .wrapper .note {
+        font-size: 1.5rem;
+        color: rgb(161, 161, 161);
+    }
+        .title .wrapper .note a{
+            font-size: 1.5rem;
+            color: rgb(161, 161, 161);
+            border-bottom: 0.5px solid rgb(161, 161, 161);
+        }
     .title .wrapper .socials {
         display: flex;
         gap: 2rem;
