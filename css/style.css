@@ -121,6 +121,9 @@ ul, li {
         text-align: center;
         width: 100%;
     }
+}
+
+@media (max-width: 550px) {
     .loading {
         display: block;
     }
