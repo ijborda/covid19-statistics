@@ -121,4 +121,7 @@ ul, li {
         text-align: center;
         width: 100%;
     }
+    .loading {
+        display: block;
+    }
 }
