@@ -5,6 +5,7 @@ html {
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 100;
+    min-height: 100vh;
 }
 h1 {
     font-size: 5rem;
@@ -29,12 +30,12 @@ ul, li {
 }
 
 /* Resuables */
-.location {
+.mainTitle {
     border-bottom: 2px solid #f8aa4b;
     padding-bottom: 1rem;
 }
 .wrapper {
-    padding: 0 10%;
+    padding: 10%;
 }
 .flex {
     display: flex;
@@ -45,8 +46,7 @@ ul, li {
 .title {
     flex-basis: 40%;
     background: #072448;
-    color: white;
-    height: 100vh;  
+    color: white; 
 }
     .title .wrapper {
         height: 100%;
@@ -68,7 +68,7 @@ ul, li {
         }
 .content {
     flex-basis: 60%;
-    min-height: 100vh;
+    height: 100%;
     background: #dbe0e5;
 }
     .content .wrapper {
@@ -77,23 +77,37 @@ ul, li {
         justify-content: stretch;
         align-items: center;
     }
-        .content .wrapper .worldwide {
+        .content .wrapper .statistics {
             width: 100%;
             border-radius: 10px;
             padding: 2rem;
         }
-            .content .wrapper .worldwide p{
+            .content .wrapper .statistics .form *{
+                border: none;
+                font-size: 1.7rem;
+                padding: 1.5rem;
+                margin-bottom: 3rem;
+                background: transparent;
+                border: 2px solid #072448;
+                color: #072448;
+                height: 65px;
+            }
+                .content .wrapper .statistics .form button:hover{
+                   background: #072448;
+                   color: #f8aa4b;
+                }
+            .content .wrapper .statistics p{
                 font-size: 2rem;
                 font-weight: bold;
             }
-                .content .wrapper .worldwide .sublist{
+                .content .wrapper .statistics .sublist{
                     margin-bottom: 2rem;
                 }
-                    .content .wrapper .worldwide .sublist li{
+                    .content .wrapper .statistics .sublist li{
                         font-size: 1.8rem;
                         margin-bottom: .5rem;
                     }
-                        .content .wrapper .worldwide .sublist li .change{
+                        .content .wrapper .statistics .sublist li .change{
                             display: inline-block;
                             width: 220px;
                         }

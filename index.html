@@ -36,10 +36,16 @@
 			</div>
 			<div class="content" data-aos="fade-left">
 				<div class="wrapper">
-					<div class="worldwide">
-						<h2 class="location">Worldwide (Last Updated: <span id="date"></span>)</h2>
+					<div class="statistics">
+						<div class="form">
+							<select id="selection" class="selection" aria-label="Location selection">
+								<option value="Worldwide" selected>Worldwide</option>
+							</select>
+							<button id="submit">Submit</button>
+						</div>
+						<h2 class="mainTitle"><span id="location">Worldwide</span> (Last Updated: <span id="date"></span>)</h2>
 						<ul>
-							<li><p>Total Confirmed: <span id="worldConf">Loading...</span></p>
+							<li><p>Total Confirmed: <span id="conf">Loading...</span></p>
 								<ul class="sublist">
 									<li><span class="change">Change from yesterday: </span><span id="confYesterday">Loading...</span></li>
 									<li><span class="change">Change from 7 days ago: </span><span id="confWeekago">Loading...</span></li>
@@ -47,7 +53,7 @@
 									<li><span class="change">Change from 90 days ago: </span><span id="confQuarterago">Loading...</span></li>
 								</ul>	
 							</li>
-							<li><p>Total Deaths: <span id="worldDied">Loading...</span></p>
+							<li><p>Total Deaths: <span id="died">Loading...</span></p>
 								<ul class="sublist">
 									<li><span class="change">Change from yesterday: </span><span id="diedYesterday">Loading...</span></li>
 									<li><span class="change">Change from 7 days ago: </span><span id="diedWeekago">Loading...</span></li>
