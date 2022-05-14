@@ -17,80 +17,76 @@ fetch('https://covid19.mathdro.id/api/countries')
         })
     })
 
-// Show Worldwide statistics on default
+// Show statistics on load (deafult: Worldwide)
 showStatistics()
 
 // Listen for selections
 document.querySelector('#submit').addEventListener('click', showStatistics)
-   
 function showStatistics() {
     let location = document.querySelector('#selection').value
-    let urlMain = `https://covid19.mathdro.id/api/countries/${location}`
+    let url = `https://covid19.mathdro.id/api/countries/${location}`
     if (location === 'Worldwide') {
-        urlMain = 'https://covid19.mathdro.id/api'
+        url = 'https://covid19.mathdro.id/api'
     }
-    fetch(urlMain)
+    fetch(url)
         .then(res => res.json())
         .then(current => {
         // Get current data and show in dom
         let confCurrent = current.confirmed.value
         let diedCurrent = current.deaths.value
         let dateCurrent = current.lastUpdate
-        showStatisticsMainDOM(confCurrent, diedCurrent, dateCurrent)
+        showStatisticsTotal(confCurrent, diedCurrent, dateCurrent)
         // Show loading in dom
         showLoading()
         // Get past data and show in dom
-        showStatisticsSub(location, dateCurrent, 1, confCurrent, diedCurrent)
-        showStatisticsSub(location, dateCurrent, 7, confCurrent, diedCurrent)
-        showStatisticsSub(location, dateCurrent, 30, confCurrent, diedCurrent)
-        showStatisticsSub(location, dateCurrent, 90, confCurrent, diedCurrent)
+        showStatisticsChanges(location, dateCurrent, 1, confCurrent, diedCurrent)
+        showStatisticsChanges(location, dateCurrent, 7, confCurrent, diedCurrent)
+        showStatisticsChanges(location, dateCurrent, 30, confCurrent, diedCurrent)
+        showStatisticsChanges(location, dateCurrent, 90, confCurrent, diedCurrent)
         })
 }    
 
-function showStatisticsMainDOM(confCurrent, diedCurrent, updateDate) {
+function showStatisticsTotal(confCurrent, diedCurrent, updateDate) {
+    // Show result (totals) in dom
     document.querySelector('#conf').innerHTML = num(confCurrent)
     document.querySelector('#died').innerHTML = num(diedCurrent)
     document.querySelector('#date').innerHTML = date(updateDate)  
 }
-function showStatisticsSubDOM(confCurrent, confPast, diedCurrent, diedPast, daysBefore) {
-    let confId = '#confYesterday'
-    let diedId = '#diedYesterday'
-    if (daysBefore === 7) {
-        confId = '#confWeekago'
-        diedId = '#diedWeekago'
-    } else if (daysBefore === 30) {
-        confId = '#confMonthago'
-        diedId = '#diedMonthago'
-    } else if (daysBefore === 90) {
-        confId = '#confQuarterago'
-        diedId = '#diedQuarterago'
-    }
-    document.querySelector(confId).innerHTML = change(confCurrent, confPast) + '% (+ ' + diff(confCurrent, confPast) + ')'
-    document.querySelector(diedId).innerHTML = change(diedCurrent, diedPast) + '% (+ ' + diff(diedCurrent, diedPast) + ')'
-}
 
-function showStatisticsSub(location, dateCurrent, daysBefore, confCurrent, diedCurrent) {
+function showStatisticsChanges(location, dateCurrent, daysBefore, confCurrent, diedCurrent) {
     fetch(`https://covid19.mathdro.id/api/daily/${calcDaysAgo(dateCurrent, daysBefore)}`)
         .then(res => res.json())
         .then(data => {
+            // Filter data for selections that are country level
             if (location !== 'Worldwide') {
                 data = data.filter(a => a.countryRegion === location)
             }
+            // Sum the cases/deaths in the country
             let confPast = data.reduce((acc, a) => acc + +a['confirmed'], 0) 
             let diedPast = data.reduce((acc, a) => acc + +a['deaths'], 0) 
-            showStatisticsSubDOM(confCurrent, confPast, diedCurrent, diedPast, daysBefore)
+            // Show result (changes) in dom
+            let confId = ''
+            let diedId = ''
+            if (daysBefore === 1) {
+                confId = '#confYesterday'
+                diedId = '#diedYesterday'
+            } else if (daysBefore === 7) {
+                confId = '#confWeekago'
+                diedId = '#diedWeekago'
+            } else if (daysBefore === 30) {
+                confId = '#confMonthago'
+                diedId = '#diedMonthago'
+            } else if (daysBefore === 90) {
+                confId = '#confQuarterago'
+                diedId = '#diedQuarterago'
+            }
+            document.querySelector(confId).innerHTML = `${change(confCurrent, confPast)}% (+ ${diff(confCurrent, confPast)})`
+            document.querySelector(diedId).innerHTML = `${change(diedCurrent, diedPast)}% (+ ${diff(diedCurrent, diedPast)})`
         })
 }
 
 function showLoading() {
-    document.querySelector('#confYesterday').innerHTML = 'Loading...'
-    document.querySelector('#diedYesterday').innerHTML = 'Loading...'
-    document.querySelector('#confWeekago').innerHTML = 'Loading...'
-    document.querySelector('#diedWeekago').innerHTML = 'Loading...'
-    document.querySelector('#confMonthago').innerHTML = 'Loading...'
-    document.querySelector('#diedMonthago').innerHTML = 'Loading...'
-    document.querySelector('#confQuarterago').innerHTML = 'Loading...'
-    document.querySelector('#diedQuarterago').innerHTML = 'Loading...'
+    Array.from(document.querySelectorAll('.loading')).forEach(a => a.innerHTML = 'Loading...')
 }
 
 function num(x) {
