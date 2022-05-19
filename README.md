@@ -1,4 +1,4 @@
-# Covid-19 Statistics
+# Covid-19 Statistics | A COVID-19 Monitoring App
 
 [Covid Statistics](https://imarijoyborda.com/covid19-statistics/) is a monitoring app that shows the percent and number of change in cases and deaths. Data are shown per country and in worldwide scale.  
 
@@ -22,3 +22,8 @@ There are still lots that need to be improved in this web application. Some plan
 Contributions are also very welcome! Just issue a pull request.
 
 ## Thanks for checking it out!
+
+Check out my other projects:
+* [Codie | See your Codewars Stats at a Glance](https://github.com/ijborda/codie)
+* [Astrie | See NASA APOD Beautifully](https://github.com/ijborda/astrie)
+* [Readability | Readability Test for Researchers](https://github.com/ijborda/readability)
