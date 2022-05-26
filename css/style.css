@@ -129,7 +129,7 @@ ul, li {
                     }
                         .content .wrapper .statistics .sublist li .change{
                             display: inline-block;
-                            width: 220px;
+                            width: 350px;
                         }
 
 /* MEDIA QUERIES */
@@ -147,7 +147,7 @@ ul, li {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 700px) {
     .loading {
         display: block;
     }

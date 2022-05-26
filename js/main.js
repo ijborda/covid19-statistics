@@ -32,7 +32,7 @@ function diff(current, past) {
 
 // Helper function: Calculate date minus some `n` number of days
 function calcDaysAgo(current, n) {
-  return new Date(new Date(current) - (n + 1) * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  return new Date(new Date(current) - (n) * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 }
 async function getCountries() {
   try {
@@ -66,10 +66,10 @@ async function showStatistics() {
     const responseTotal = await fetch(urlTotal);
     const dataTotal = await responseTotal.json();
     // Fetch change data
-    const urlChange = [`https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 1)}`,
-      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 7)}`,
-      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 30)}`,
-      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 90)}`];
+    const urlChange = [`https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 1 + 1)}`,
+      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 7 + 1)}`,
+      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 30 + 1)}`,
+      `https://covid19.mathdro.id/api/daily/${calcDaysAgo(dataTotal.lastUpdate, 90 + 1)}`];
     const responseChange = await Promise.all(urlChange.map((url) => fetch(url)));
     const dataChange = await Promise.all(responseChange.map((res) => res.json()));
     // Render total data in DOM
@@ -88,21 +88,29 @@ async function showStatistics() {
       // Show result (changes) in dom
       let confId = '';
       let diedId = '';
+      let dateStamp = '';
       if (i === 0) {
         confId = '#confYesterday';
         diedId = '#diedYesterday';
+        dateStamp = '.yesterday';
       } else if (i === 1) {
         confId = '#confWeekago';
         diedId = '#diedWeekago';
+        dateStamp = '.weekago';
       } else if (i === 2) {
         confId = '#confMonthago';
         diedId = '#diedMonthago';
+        dateStamp = '.monthago';
       } else if (i === 3) {
         confId = '#confQuarterago';
         diedId = '#diedQuarterago';
+        dateStamp = '.quarterago';
       }
       document.querySelector(confId).innerHTML = `${change(dataTotal.confirmed.value, confirmedPast)}% (+ ${diff(dataTotal.confirmed.value, confirmedPast)})`;
       document.querySelector(diedId).innerHTML = `${change(dataTotal.deaths.value, diedPast)}% (+ ${diff(dataTotal.deaths.value, diedPast)})`;
+      Array.from(document.querySelectorAll(dateStamp)).forEach((dateEl) => {
+        dateEl.innerHTML = `(${data[0].lastUpdate.split(' ')[0]})`;
+      });
     });
   } catch (err) {
     throw new Error(err);
