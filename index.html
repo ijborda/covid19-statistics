@@ -65,9 +65,9 @@
 							</select>
 							<button id="submit">Submit</button>
 						</div>
-						<h2 class="mainTitle"><span id="location">Worldwide</span> <span class="update">Last Updated: <span id="date"></span></span></h2>
+						<h2 class="mainTitle"><span id="location">Worldwide</span> <span class="update">Last Updated: <span id="date" class="loading"></span></span></h2>
 						<ul>
-							<li><p>Total Confirmed: <span id="conf">Loading...</span></p>
+							<li><p>Total Confirmed: <span id="conf" class="loading">Loading...</span></p>
 								<ul class="sublist">
 									<li><span class="change">Change from yesterday: </span><span class="loading" id="confYesterday">Loading...</span></li>
 									<li><span class="change">Change from 7 days ago: </span><span class="loading" id="confWeekago">Loading...</span></li>
@@ -75,7 +75,7 @@
 									<li><span class="change">Change from 90 days ago: </span><span class="loading" id="confQuarterago">Loading...</span></li>
 								</ul>	
 							</li>
-							<li><p>Total Deaths: <span id="died">Loading...</span></p>
+							<li><p>Total Deaths: <span id="died" class="loading">Loading...</span></p>
 								<ul class="sublist">
 									<li><span class="change">Change from yesterday: </span><span class="loading" id="diedYesterday">Loading...</span></li>
 									<li><span class="change">Change from 7 days ago: </span><span class="loading" id="diedWeekago">Loading...</span></li>
