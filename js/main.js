@@ -1,3 +1,13 @@
+// Helper function: Show loading
+function showLoading() {
+  Array.from(document.querySelectorAll('.loading')).forEach((a) => {
+    a.innerHTML = 'Loading...';
+  });
+  Array.from(document.querySelectorAll('.loadingDots')).forEach((a) => {
+    a.innerHTML = '...';
+  });
+}
+
 // Helper function: Format numbers with comma
 function num(x) {
   return x.toString()
@@ -58,9 +68,7 @@ async function showStatistics() {
     const location = document.querySelector('#selection').value;
     document.querySelector('#location').innerHTML = location;
     // Show loading
-    Array.from(document.querySelectorAll('.loading')).forEach((a) => {
-      a.innerHTML = 'Loading...';
-    });
+    showLoading();
     // Fetch total data
     const urlTotal = location === 'Worldwide' ? 'https://covid19.mathdro.id/api' : `https://covid19.mathdro.id/api/countries/${location}`;
     const responseTotal = await fetch(urlTotal);
